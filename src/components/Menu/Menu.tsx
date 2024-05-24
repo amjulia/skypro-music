@@ -1,8 +1,12 @@
+'use client'
 import Link from "next/link";
 import styles from "./Menu.module.css";
 import Image from "next/image";
+import { useState } from "react";
 
 export const Menu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => setIsOpen((prevState) => !prevState);
   return (
     <nav className={styles.nav}>
       <div>
@@ -14,30 +18,32 @@ export const Menu = () => {
           alt="logo"
         />
       </div>
-      <div className={styles.nav__burger}>
+      <div className={styles.nav__burger} onClick={toggleMenu}>
         <span className={styles.burger__line} />
         <span className={styles.burger__line} />
         <span className={styles.burger__line} />
       </div>
-      <div className={styles.nav__menu}>
-        <ul className={styles.menu__list}>
-          <li className={styles.menu__item}>
-            <a href="#" className={styles.menu__link}>
-              Главное
-            </a>
-          </li>
-          <li className={styles.menu__item}>
-            <a href="#" className={styles.menu__link}>
-              Мой плейлист
-            </a>
-          </li>
-          <li className={styles.menu__item}>
-            <Link href="/signin" className={styles.menu__link}>
-              Войти
-            </Link>
-          </li>
-        </ul>
-      </div>
+      {isOpen && (
+        <div className={styles.nav__menu}>
+          <ul className={styles.menu__list}>
+            <li className={styles.menu__item}>
+              <a href="#" className={styles.menu__link}>
+                Главное
+              </a>
+            </li>
+            <li className={styles.menu__item}>
+              <a href="#" className={styles.menu__link}>
+                Мой плейлист
+              </a>
+            </li>
+            <li className={styles.menu__item}>
+              <Link href="/signin" className={styles.menu__link}>
+                Войти
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };
