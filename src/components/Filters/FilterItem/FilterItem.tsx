@@ -1,18 +1,20 @@
 import styles from "./FilterItem.module.css";
 import cn from "classnames";
 type Props = {
-  title: string,
-  list: string[],
-  onClick: (value:string) => void,
-  value: string,
-  isOpen: boolean
-}
+  title: string;
+  list: string[];
+  onClick: (value: string) => void;
+  value: string;
+  isOpen: boolean;
+};
 const FilterItem = ({ title, list, onClick, value, isOpen }: Props) => {
   return (
     <div>
-      <div 
-        className={cn(styles.filter__button, styles.btnText)}
-        onClick={() => {onClick(value)}}
+      <div
+        className={cn(styles.filter__button, styles.btnText, {[styles.active]:isOpen})}
+        onClick={() => {
+          onClick(value);
+        }}
       >
         {title}
       </div>

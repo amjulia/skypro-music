@@ -4,8 +4,7 @@
     overflow: hidden;
     background-color: #383838;
   }
-  
-  .container {
+    .container {
     max-width: 1920px;
     height: 100vh;
     margin: 0 auto;

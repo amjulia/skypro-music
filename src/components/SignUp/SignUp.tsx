@@ -3,8 +3,6 @@ import Link from "next/link";
 import styles from "./SignUp.module.css";
 import cn from "classnames";
 
-
-
 export const SignUp = () => {
   return (
     <div className={styles.wrapper}>
@@ -13,7 +11,12 @@ export const SignUp = () => {
           <form className={styles.modal__formLogin}>
             <Link href="/">
               <div className={styles.modal__logo}>
-                <Image src="/img/logo_modal.png" alt="logo" width={140} height={21}/>
+                <Image
+                  src="/img/logo_modal.png"
+                  alt="logo"
+                  width={140}
+                  height={21}
+                />
               </div>
             </Link>
             <input
@@ -41,7 +44,5 @@ export const SignUp = () => {
         </div>
       </div>
     </div>
-  )
-}
-
-
+  );
+};

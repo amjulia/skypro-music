@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Link from "next/link";
 import styles from "./Menu.module.css";
 import Image from "next/image";

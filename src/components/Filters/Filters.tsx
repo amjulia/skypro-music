@@ -3,30 +3,26 @@ import { useState } from "react";
 import FilterItem from "./FilterItem/FilterItem";
 import styles from "./Filters.module.css";
 type Props = {
-  uniqueAuthors:string[],
-  uniqueGenre:string[]
-}
-export const Filters = ({uniqueAuthors, uniqueGenre}: Props) => {
+  uniqueAuthors: string[];
+  uniqueGenre: string[];
+};
+export const Filters = ({ uniqueAuthors, uniqueGenre }: Props) => {
   const filterData = [
-   {list: uniqueAuthors,
-    title: "исполнителю",
-    value: "author"
-   },
-   {
-    list: uniqueGenre,
-    title: "жанру",
-    value: "genre"
-   },
-    {list: ["По умолчанию", "Сначала новые", "Сначала старые"],
-    title: "году выпуска",
-     value: "release"
-  }
-   
-  ]
+    { list: uniqueAuthors, title: "исполнителю", value: "author" },
+    {
+      list: uniqueGenre,
+      title: "жанру",
+      value: "genre",
+    },
+    {
+      list: ["По умолчанию", "Сначала новые", "Сначала старые"],
+      title: "году выпуска",
+      value: "release",
+    },
+  ];
   const [filterValue, setFilterValue] = useState<string | null>(null);
   const changeFilterValue = (value: string) => {
     setFilterValue((prev) => (prev === value ? null : value));
-   
   };
   return (
     <>
@@ -40,8 +36,6 @@ export const Filters = ({uniqueAuthors, uniqueGenre}: Props) => {
             value={item.value}
             onClick={changeFilterValue}
             isOpen={filterValue === item.value}
-            
-
           />
         ))}
       </div>

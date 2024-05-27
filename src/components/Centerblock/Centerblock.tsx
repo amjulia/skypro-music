@@ -4,12 +4,12 @@ import { Filters } from "../Filters/Filters";
 import { getTracks } from "@/api/track";
 import { TrackType } from "@/types/types";
 
-
 export const Centerblock = async () => {
-  
   const tracks: TrackType[] = await getTracks();
- const uniqueAuthors = Array.from(new Set(tracks.map((track) => track.author)));
-const uniqueGenre = Array.from(new Set(tracks.map((track) => track.genre)));
+  const uniqueAuthors = Array.from(
+    new Set(tracks.map((track) => track.author))
+  );
+  const uniqueGenre = Array.from(new Set(tracks.map((track) => track.genre)));
 
   return (
     <div className={styles.centerblock}>
@@ -26,7 +26,7 @@ const uniqueGenre = Array.from(new Set(tracks.map((track) => track.genre)));
       </div>
       <h2 className={styles.heading}>Треки</h2>
 
-      <Filters uniqueAuthors={uniqueAuthors} uniqueGenre={uniqueGenre}/>
+      <Filters uniqueAuthors={uniqueAuthors} uniqueGenre={uniqueGenre} />
       <div className={styles.content}>
         <div className={styles.content__title}>
           <div className={cn(styles.playlistTitle__col, styles.col01)}>
@@ -57,7 +57,8 @@ const uniqueGenre = Array.from(new Set(tracks.map((track) => track.genre)));
                     </div>
                     <div className={styles.track__titleText}>
                       <a className={styles.track__titleLink} href="http://">
-                        {value.name} <span className={styles.track__titleSpan} />
+                        {value.name}{" "}
+                        <span className={styles.track__titleSpan} />
                       </a>
                     </div>
                   </div>
@@ -68,20 +69,21 @@ const uniqueGenre = Array.from(new Set(tracks.map((track) => track.genre)));
                   </div>
                   <div className={styles.track__album}>
                     <a className={styles.track__albumLink} href="http://">
-                     {value.album}
+                      {value.album}
                     </a>
                   </div>
                   <div className={styles.track__time}>
                     <svg className={styles.track__timeSvg}>
                       <use xlinkHref="img/icon/sprite.svg#icon-like" />
                     </svg>
-                    <span className={styles.track__timeText}>{value.duration_in_seconds}</span>
+                    <span className={styles.track__timeText}>
+                      {value.duration_in_seconds}
+                    </span>
                   </div>
                 </div>
               </div>
             );
           })}
-
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 .listContainer {
   position: absolute;
- 
+
   width: 248px;
   max-height: 305px;
   padding: 34px;
@@ -33,34 +33,38 @@
 }
 .filter__button {
   position: relative;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
 
-    line-height: 24px;
-    border: 1px solid #ffffff;
-    border-radius: 60px;
-    padding: 6px 20px;
-  }
-  .btnText:hover {
-    border-color: #d9b6ff;
-    color: #d9b6ff;
-    cursor: pointer;
-  }
-  
-  .btnIcon:hover svg {
-    fill: transparent;
-    stroke: #acacac;
-    cursor: pointer;
-  }
-  
-  .btnText:active {
-    border-color: #ad61ff;
-    color: #ad61ff;
-    cursor: pointer;
-  }
-.listText:hover {
-  color: #B672FF;
-  text-decoration:underline;
+  line-height: 24px;
+  border: 1px solid #ffffff;
+  border-radius: 60px;
+  padding: 6px 20px;
+}
+.btnText:hover {
+  border-color: #d9b6ff;
+  color: #d9b6ff;
   cursor: pointer;
+}
+
+.btnIcon:hover svg {
+  fill: transparent;
+  stroke: #acacac;
+  cursor: pointer;
+}
+
+.btnText:active {
+  border-color: #ad61ff;
+  color: #ad61ff;
+  cursor: pointer;
+}
+.listText:hover {
+  color: #b672ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.active {
+  border-color: #9A48F1;
+  color: #B672FF;
 }
