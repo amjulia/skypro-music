@@ -16,7 +16,7 @@ export default function Error({
 
   return (
     <div className={styles.wrapper}>
-      <h2>Что-то пошло не так!</h2>
+      <h2 className={styles.heading}>Что-то пошло не так!</h2>
       <button className={styles.button} onClick={reset}>
         Попробовать снова
       </button>
