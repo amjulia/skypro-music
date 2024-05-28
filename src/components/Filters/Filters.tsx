@@ -2,10 +2,8 @@
 import { useState } from "react";
 import FilterItem from "./FilterItem/FilterItem";
 import styles from "./Filters.module.css";
-type Props = {
-  uniqueAuthors: string[];
-  uniqueGenre: string[];
-};
+import { Props } from "@/types/types";
+
 export const Filters = ({ uniqueAuthors, uniqueGenre }: Props) => {
   const filterData = [
     { list: uniqueAuthors, title: "исполнителю", value: "author" },

@@ -17,3 +17,8 @@ export type TrackType = {
   track_file: string;
   stared_user: StaredUserType[];
 };
+export type Props = {
+  uniqueAuthors: string[];
+  uniqueGenre: string[];
+  tracks: TrackType[];
+};

@@ -1,16 +1,11 @@
+'use client'
 import cn from "classnames";
 import styles from "./Centerblock.module.css";
 import { Filters } from "../Filters/Filters";
-import { getTracks } from "@/api/track";
-import { TrackType } from "@/types/types";
+import { Props } from "@/types/types";
+import { useState } from "react";
 
-export const Centerblock = async () => {
-  const tracks: TrackType[] = await getTracks();
-  const uniqueAuthors = Array.from(
-    new Set(tracks.map((track) => track.author))
-  );
-  const uniqueGenre = Array.from(new Set(tracks.map((track) => track.genre)));
-
+export const Centerblock = ({uniqueAuthors, uniqueGenre, tracks}: Props) => {
   return (
     <div className={styles.centerblock}>
       <div className={styles.search}>
@@ -47,7 +42,7 @@ export const Centerblock = async () => {
         <div className={styles.content__playlist}>
           {tracks.map((value, index: number) => {
             return (
-              <div className={styles.playlist__item} key={index}>
+              <div className={styles.playlist__item} key={index} >
                 <div className={styles.playlist__track}>
                   <div className={styles.track__title}>
                     <div className={styles.track__titleImage}>
@@ -56,21 +51,21 @@ export const Centerblock = async () => {
                       </svg>
                     </div>
                     <div className={styles.track__titleText}>
-                      <a className={styles.track__titleLink} href="http://">
+                      <span className={styles.track__titleLink}>
                         {value.name}{" "}
                         <span className={styles.track__titleSpan} />
-                      </a>
+                      </span>
                     </div>
                   </div>
                   <div className={styles.track__author}>
-                    <a className={styles.track__authorLink} href="http://">
+                    <span className={styles.track__authorLink}>
                       {value.author}
-                    </a>
+                    </span>
                   </div>
                   <div className={styles.track__album}>
-                    <a className={styles.track__albumLink} href="http://">
+                    <span className={styles.track__albumLink}>
                       {value.album}
-                    </a>
+                    </span>
                   </div>
                   <div className={styles.track__time}>
                     <svg className={styles.track__timeSvg}>
