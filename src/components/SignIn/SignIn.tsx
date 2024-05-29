@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/image";
 import styles from "./SignIn.module.css";
 import cn from "classnames";
 import Link from "next/link";
@@ -11,7 +11,12 @@ export const SignIn = () => {
           <form className={styles.modal__formLogin} action="#">
             <Link href="/">
               <div className={styles.modal__logo}>
-                <Image src="/img/logo_modal.png" alt="logo" width={140} height={21} />
+                <Image
+                  src="/img/logo_modal.png"
+                  alt="logo"
+                  width={140}
+                  height={21}
+                />
               </div>
             </Link>
             <input
@@ -36,7 +41,5 @@ export const SignIn = () => {
         </div>
       </div>
     </div>
-  )
-}
-
-
+  );
+};
