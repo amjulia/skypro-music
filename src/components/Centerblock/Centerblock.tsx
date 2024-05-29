@@ -4,6 +4,7 @@ import styles from "./Centerblock.module.css";
 import { Filters } from "../Filters/Filters";
 import { Props } from "@/types/types";
 import { useState } from "react";
+import { timer } from "../helper";
 
 export const Centerblock = ({uniqueAuthors, uniqueGenre, tracks}: Props) => {
   return (
@@ -72,7 +73,7 @@ export const Centerblock = ({uniqueAuthors, uniqueGenre, tracks}: Props) => {
                       <use xlinkHref="img/icon/sprite.svg#icon-like" />
                     </svg>
                     <span className={styles.track__timeText}>
-                      {value.duration_in_seconds}
+                      {timer(value.duration_in_seconds)}
                     </span>
                   </div>
                 </div>

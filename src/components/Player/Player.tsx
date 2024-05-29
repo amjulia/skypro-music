@@ -4,6 +4,7 @@ import cn from "classnames";
 import styles from "./Player.module.css";
 import { Props } from "@/types/types";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import { timer } from "../helper";
 
 export const Player = ({ tracks }: Props) => {
   const audioRef = useRef<null | HTMLAudioElement>(null);
@@ -16,13 +17,7 @@ export const Player = ({ tracks }: Props) => {
 
   const duration = audioRef.current?.duration || 0;
 
-  function timer (value:number) {
-    const currentMinutes = Math.floor(value / 60);
-    const currentSeconds = Math.floor(value % 60);
-    return `${currentMinutes}:${
-      currentSeconds < 10 ? "0" + currentSeconds : currentSeconds
-    }`
-  }
+  
  
   // Функция для воспроизведения и паузы
   const togglePlay = () => {
