@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, ChangeEvent } from "react";
 import cn from "classnames";
 import styles from "./Player.module.css";
 
@@ -75,7 +75,7 @@ export const Player = ({ track }: Props) => {
           max={duration}
           value={currentTime}
           step={0.01}
-          onChange={(e) => setCurrentTime(Number(e.target.value))}
+          onChange={(e:ChangeEvent<HTMLInputElement>) => setCurrentTime(Number(e.target.value))}
         />
 
         <div className={styles.bar__playerBlock}>
@@ -132,14 +132,14 @@ export const Player = ({ track }: Props) => {
                   </svg>
                 </div>
                 <div className={styles.trackPlay__author}>
-                  <a className={styles.trackPlay__authorLink} href="http://">
+                  <span className={styles.trackPlay__authorLink}>
                     {track?.author}
-                  </a>
+                  </span>
                 </div>
                 <div className={styles.trackPlay__album}>
-                  <a className={styles.trackPlay__albumLink} href="http://">
+                  <span className={styles.trackPlay__albumLink}>
                     {track?.name}
-                  </a>
+                  </span>
                 </div>
               </div>
               <div className={styles.trackPlay__likeDis}>
@@ -172,7 +172,7 @@ export const Player = ({ track }: Props) => {
                   max="1"
                   step="0.01"
                   value={volume}
-                  onChange={(e) => setVolume(Number(e.target.value))}
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => setVolume(Number(e.target.value))}
                 />
               </div>
             </div>

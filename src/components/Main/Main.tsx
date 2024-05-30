@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import styles from "./Main.module.css";
 import { Menu } from "../Menu/Menu";
 import { Centerblock } from "../Centerblock/Centerblock";
@@ -10,7 +10,7 @@ import { useState } from "react";
 export type Props = {
   tracks: TrackType[];
 };
-export const Main =  ({tracks}:Props) => {
+export const Main = ({ tracks }: Props) => {
   const [track, setTrack] = useState<null | TrackType>(null);
   const uniqueAuthors = Array.from(
     new Set(tracks.map((track) => track.author))
@@ -21,7 +21,12 @@ export const Main =  ({tracks}:Props) => {
       <div className={styles.container}>
         <main className={styles.main}>
           <Menu />
-          <Centerblock tracks={tracks} setTrack={setTrack} uniqueAuthors={uniqueAuthors} uniqueGenre={uniqueGenre} />
+          <Centerblock
+            tracks={tracks}
+            setTrack={setTrack}
+            uniqueAuthors={uniqueAuthors}
+            uniqueGenre={uniqueGenre}
+          />
           <Sidebar />
         </main>
         {track && <Player track={track} />}
