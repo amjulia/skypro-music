@@ -75,7 +75,9 @@ export const Player = ({ track }: Props) => {
           max={duration}
           value={currentTime}
           step={0.01}
-          onChange={(e:ChangeEvent<HTMLInputElement>) => setCurrentTime(Number(e.target.value))}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            (audioRef.current && (audioRef.current.currentTime = Number(e.target.value)))
+          }
         />
 
         <div className={styles.bar__playerBlock}>
@@ -172,7 +174,9 @@ export const Player = ({ track }: Props) => {
                   max="1"
                   step="0.01"
                   value={volume}
-                  onChange={(e:ChangeEvent<HTMLInputElement>) => setVolume(Number(e.target.value))}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setVolume(Number(e.target.value))
+                  }
                 />
               </div>
             </div>
