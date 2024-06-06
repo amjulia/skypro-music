@@ -23,13 +23,12 @@ export const Main = ({ tracks }: Props) => {
           <Menu />
           <Centerblock
             tracks={tracks}
-            setTrack={setTrack}
             uniqueAuthors={uniqueAuthors}
             uniqueGenre={uniqueGenre}
           />
           <Sidebar />
         </main>
-        {track && <Player track={track} />}
+        {track && <Player />}
         <footer className={styles.footer} />
       </div>
     </div>

@@ -6,12 +6,14 @@ import styles from "./Player.module.css";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { timer } from "../helper";
 import { TrackType } from "@/types/types";
-type Props = {
-  track: TrackType;
-};
-export const Player = ({ track }: Props) => {
+import { useAppDispatch, useAppSelector } from "@/hooks/store";
+import { nextTrack } from "@/store/features/playlistSlice";
+
+export const Player = () => {
+  const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
   const audioRef = useRef<null | HTMLAudioElement>(null);
 
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isLoop, setIsLoop] = useState<boolean>(false);
@@ -34,6 +36,9 @@ export const Player = ({ track }: Props) => {
     audioRef.current?.play();
     setIsPlaying(true);
   };
+  
+
+
   //повтор трека
   const handleLoop = () => {
     setIsLoop((prev) => !prev);
@@ -52,7 +57,7 @@ export const Player = ({ track }: Props) => {
     return () => {
       audio?.removeEventListener("timeupdate", setTime);
     };
-  }, [track]);
+  }, [currentTrack]);
 
   //регулирование громкости
   useEffect(() => {
@@ -60,14 +65,32 @@ export const Player = ({ track }: Props) => {
       audioRef.current.volume = volume;
     }
   }, [volume]);
+  const dispatch = useAppDispatch();
+  const handleNext = () => {
+    dispatch(nextTrack())
+    }
+
+//   useEffect(() => {
+//     audioRef.current.addEventListener('ended', handleNext);
+
+//     // Воспроизводим новый трек
+//     audioRef.current.play();
+
+//     return () => {
+//       audioRef.current.removeEventListener('ended', handleEnded);
+//     };
+// }, [currentTrack, playlist]);
 
   const alertMessage = () => {
     alert("Еще не реализовано");
   };
+  if (!currentTrack) {
+    return null
+  }
   return (
     <div className={styles.bar}>
       <div className={styles.bar__content}>
-        <audio ref={audioRef} src={track?.track_file}></audio>
+        <audio ref={audioRef} src={currentTrack?.track_file}></audio>
         <div className={styles.barTime}>
           {timer(currentTime)} / {timer(duration)}
         </div>
@@ -135,12 +158,12 @@ export const Player = ({ track }: Props) => {
                 </div>
                 <div className={styles.trackPlay__author}>
                   <span className={styles.trackPlay__authorLink}>
-                    {track?.author}
+                    {currentTrack?.author}
                   </span>
                 </div>
                 <div className={styles.trackPlay__album}>
                   <span className={styles.trackPlay__albumLink}>
-                    {track?.name}
+                    {currentTrack?.name}
                   </span>
                 </div>
               </div>
