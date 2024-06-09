@@ -45,7 +45,7 @@ export const Centerblock = ({ uniqueAuthors, uniqueGenre, tracks }: Props) => {
         </div>
         <div className={styles.content__playlist}>
           {tracks.map((value) => {
-            return <Track track ={value} tracks={tracks}key={value.id} />;
+            return <Track track={value} tracks={tracks} key={value.id} />;
           })}
         </div>
       </div>

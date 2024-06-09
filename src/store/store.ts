@@ -19,4 +19,3 @@ export type RootState = ReturnType<AppStore["getState"]>;
 
 // Тип AppDispatch представляет собой тип функции диспетчера, который возвращает функция dispatch хранилища Redux.
 export type AppDispatch = AppStore["dispatch"];
-

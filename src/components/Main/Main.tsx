@@ -5,7 +5,6 @@ import { Sidebar } from "../Sidebar/Sidebar";
 import { Player } from "../Player/Player";
 import { TrackType } from "@/types/types";
 
-
 export type Props = {
   tracks: TrackType[];
 };

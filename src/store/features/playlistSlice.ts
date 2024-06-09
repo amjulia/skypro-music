@@ -67,6 +67,11 @@ const PlaylistSlice = createSlice({
   },
 });
 
-export const { setCurrentTrack, setNextTrack, setIsPlaying, setPrevTrack, setIsShuffled } =
-  PlaylistSlice.actions;
+export const {
+  setCurrentTrack,
+  setNextTrack,
+  setIsPlaying,
+  setPrevTrack,
+  setIsShuffled,
+} = PlaylistSlice.actions;
 export const playlistReducer = PlaylistSlice.reducer;

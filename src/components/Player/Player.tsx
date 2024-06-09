@@ -19,8 +19,8 @@ export const Player = () => {
   const dispatch = useAppDispatch();
 
   const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
-  const isShaffled = useAppSelector((state)=> state.playlist.isShuffled)
-  
+  const isShaffled = useAppSelector((state) => state.playlist.isShuffled);
+
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isLoop, setIsLoop] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(0.5);
@@ -76,8 +76,8 @@ export const Player = () => {
     dispatch(setPrevTrack());
   };
   const handleShaffled = () => {
-    dispatch(setIsShuffled())
-  }
+    dispatch(setIsShuffled());
+  };
 
   useEffect(() => {
     audioRef.current?.addEventListener("ended", handleNext);
@@ -89,7 +89,6 @@ export const Player = () => {
       audioRef.current?.removeEventListener("ended", handleNext);
     };
   }, [currentTrack, audioRef]);
-
 
   if (!currentTrack) {
     return null;
@@ -150,8 +149,15 @@ export const Player = () => {
                   <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
                 </svg>
               </div>
-              <div className={styles.player__btnShuffle} onClick={handleShaffled}>
-                <svg className={cn(styles.player__btnShuffleSvg, {[styles.player__btnShuffleSvgActive ]: isShaffled})}>
+              <div
+                className={styles.player__btnShuffle}
+                onClick={handleShaffled}
+              >
+                <svg
+                  className={cn(styles.player__btnShuffleSvg, {
+                    [styles.player__btnShuffleSvgActive]: isShaffled,
+                  })}
+                >
                   <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
                 </svg>
               </div>
