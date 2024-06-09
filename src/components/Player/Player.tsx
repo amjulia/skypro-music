@@ -6,7 +6,12 @@ import styles from "./Player.module.css";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { timer } from "../helper";
 import { useAppDispatch, useAppSelector } from "@/hooks/store";
-import { setIsPlaying, setNextTrack } from "@/store/features/playlistSlice";
+import {
+  setIsPlaying,
+  setIsShuffled,
+  setNextTrack,
+  setPrevTrack,
+} from "@/store/features/playlistSlice";
 
 export const Player = () => {
   const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
@@ -14,8 +19,8 @@ export const Player = () => {
   const dispatch = useAppDispatch();
 
   const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  // const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const isShaffled = useAppSelector((state)=> state.playlist.isShuffled)
+  
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isLoop, setIsLoop] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(0.5);
@@ -35,11 +40,7 @@ export const Player = () => {
     } else {
       play();
     }
-    
-   
-    
   };
-  
 
   //повтор трека
   const handleLoop = () => {
@@ -67,27 +68,31 @@ export const Player = () => {
       audioRef.current.volume = volume;
     }
   }, [volume]);
-  
+
   const handleNext = () => {
-    dispatch(setNextTrack())
-    }
-
-//   useEffect(() => {
-//     audioRef.current.addEventListener('ended', handleNext);
-
-//     // Воспроизводим новый трек
-//     audioRef.current.play();
-
-//     return () => {
-//       audioRef.current.removeEventListener('ended', handleEnded);
-//     };
-// }, [currentTrack, playlist]);
-
-  const alertMessage = () => {
-    alert("Еще не реализовано");
+    dispatch(setNextTrack());
   };
+  const handlePrev = () => {
+    dispatch(setPrevTrack());
+  };
+  const handleShaffled = () => {
+    dispatch(setIsShuffled())
+  }
+
+  useEffect(() => {
+    audioRef.current?.addEventListener("ended", handleNext);
+
+    // Воспроизводим новый трек
+    audioRef.current?.play();
+
+    return () => {
+      audioRef.current?.removeEventListener("ended", handleNext);
+    };
+  }, [currentTrack, audioRef]);
+
+
   if (!currentTrack) {
-    return null
+    return null;
   }
   return (
     <div className={styles.bar}>
@@ -101,14 +106,15 @@ export const Player = () => {
           value={currentTime}
           step={0.01}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            (audioRef.current && (audioRef.current.currentTime = Number(e.target.value)))
+            audioRef.current &&
+            (audioRef.current.currentTime = Number(e.target.value))
           }
         />
 
         <div className={styles.bar__playerBlock}>
           <div className={styles.bar__player}>
             <div className={styles.player__controls}>
-              <div className={styles.player__btnPrev} onClick={alertMessage}>
+              <div className={styles.player__btnPrev} onClick={handlePrev}>
                 <svg className={styles.player__btnPrevSvg}>
                   <use xlinkHref="img/icon/sprite.svg#icon-prev" />
                 </svg>
@@ -130,7 +136,7 @@ export const Player = () => {
                   </svg>
                 )}
               </div>
-              <div className={styles.player__btnNext} onClick={alertMessage}>
+              <div className={styles.player__btnNext} onClick={handleNext}>
                 <svg className={styles.player__btnNextSvg}>
                   <use xlinkHref="img/icon/sprite.svg#icon-next" />
                 </svg>
@@ -144,8 +150,8 @@ export const Player = () => {
                   <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
                 </svg>
               </div>
-              <div className={styles.player__btnShuffle} onClick={alertMessage}>
-                <svg className={styles.player__btnShuffleSvg}>
+              <div className={styles.player__btnShuffle} onClick={handleShaffled}>
+                <svg className={cn(styles.player__btnShuffleSvg, {[styles.player__btnShuffleSvgActive ]: isShaffled})}>
                   <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
                 </svg>
               </div>
