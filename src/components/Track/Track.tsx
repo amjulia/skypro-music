@@ -4,7 +4,7 @@ import styles from "./Track.module.css";
 import cn from "classnames";
 import { TrackType } from '@/types/types';
 import { useAppDispatch, useAppSelector } from '@/hooks/store';
-import { setCurrentTrack } from '@/store/features/playlistSlice';
+import { setCurrentTrack, setIsPlaying } from '@/store/features/playlistSlice';
 import { timer } from '../helper';
 type Props = {
     track: TrackType;
@@ -15,11 +15,17 @@ const Track = ({track, tracks}:Props) => {
     const {name, author, album, duration_in_seconds} = track;
     const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
     const isCurrentTrack = currentTrack?.id === track.id;
-    const isPlaying = useAppSelector((state) => state.playlist.isPlaying)
+    const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
+    const handleTrackClick = () => {
+      dispatch(setCurrentTrack({currentTrack: track, tracks}));
+      if (!isPlaying) dispatch(setIsPlaying());
+      console.log(isPlaying)
+    };
+  
   return (
     <div  className={styles.playlist__item}
                 
-                onClick={() => dispatch(setCurrentTrack({currentTrack: track, tracks}))}
+                onClick={handleTrackClick}
               >
                 <div className={styles.playlist__track}>
                   <div className={styles.track__title}>

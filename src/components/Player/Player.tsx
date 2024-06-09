@@ -6,37 +6,40 @@ import styles from "./Player.module.css";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { timer } from "../helper";
 import { useAppDispatch, useAppSelector } from "@/hooks/store";
-import { nextTrack } from "@/store/features/playlistSlice";
+import { setIsPlaying, setNextTrack } from "@/store/features/playlistSlice";
 
 export const Player = () => {
   const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
   const audioRef = useRef<null | HTMLAudioElement>(null);
+  const dispatch = useAppDispatch();
 
+  const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  // const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isLoop, setIsLoop] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(0.5);
 
   const duration = audioRef.current?.duration || 0;
 
+  const play = () => {
+    audioRef.current?.play();
+    if (!isPlaying) dispatch(setIsPlaying());
+  };
   // Функция для воспроизведения и паузы
   const togglePlay = () => {
     const audio = audioRef.current;
     if (isPlaying) {
       audio?.pause();
+      dispatch(setIsPlaying());
     } else {
-      audio?.play();
+      play();
     }
-    setIsPlaying((prev) => !prev);
-  };
-  //воспроизведение трека
-  const play = () => {
-    audioRef.current?.play();
-    setIsPlaying(true);
+    
+   
+    
   };
   
-
 
   //повтор трека
   const handleLoop = () => {
@@ -52,7 +55,7 @@ export const Player = () => {
       }
     };
     audio?.addEventListener("timeupdate", setTime);
-    play();
+    audioRef.current?.play();
     return () => {
       audio?.removeEventListener("timeupdate", setTime);
     };
@@ -64,9 +67,9 @@ export const Player = () => {
       audioRef.current.volume = volume;
     }
   }, [volume]);
-  const dispatch = useAppDispatch();
+  
   const handleNext = () => {
-    dispatch(nextTrack())
+    dispatch(setNextTrack())
     }
 
 //   useEffect(() => {

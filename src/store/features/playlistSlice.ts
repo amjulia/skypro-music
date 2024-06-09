@@ -29,7 +29,7 @@ const PlaylistSlice = createSlice({
         () => 0.5 - Math.random()
       );
     },
-    nextTrack: (state) => {
+    setNextTrack: (state) => {
       const playlist = state.isShuffled
         ? state.shuffledPlaylist
         : state.playlist;
@@ -43,8 +43,11 @@ const PlaylistSlice = createSlice({
         state.currentTrack = playlist[nextIndex];
       }
     },
+    setIsPlaying: (state) => {
+      state.isPlaying = !state.isPlaying;
+    }
   },
 });
 
-export const { setCurrentTrack, nextTrack } = PlaylistSlice.actions;
+export const { setCurrentTrack, setNextTrack, setIsPlaying} = PlaylistSlice.actions;
 export const playlistReducer = PlaylistSlice.reducer;
