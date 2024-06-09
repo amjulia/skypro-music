@@ -5,7 +5,6 @@ import styles from "./Player.module.css";
 
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { timer } from "../helper";
-import { TrackType } from "@/types/types";
 import { useAppDispatch, useAppSelector } from "@/hooks/store";
 import { nextTrack } from "@/store/features/playlistSlice";
 

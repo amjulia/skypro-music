@@ -3,12 +3,9 @@ import cn from "classnames";
 import styles from "./Centerblock.module.css";
 import { Filters } from "../Filters/Filters";
 import { TrackType } from "@/types/types";
-import { timer } from "../helper";
-import { useState } from "react";
 import Track from "../Track/Track";
 type Props = {
   tracks: TrackType[];
-  setTrack: (value: TrackType) => void;
   uniqueAuthors: string[];
   uniqueGenre: string[];
 };

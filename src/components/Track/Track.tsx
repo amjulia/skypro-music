@@ -15,6 +15,7 @@ const Track = ({track, tracks}:Props) => {
     const {name, author, album, duration_in_seconds} = track;
     const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
     const isCurrentTrack = currentTrack?.id === track.id;
+    const isPlaying = useAppSelector((state) => state.playlist.isPlaying)
   return (
     <div  className={styles.playlist__item}
                 
@@ -23,9 +24,10 @@ const Track = ({track, tracks}:Props) => {
                 <div className={styles.playlist__track}>
                   <div className={styles.track__title}>
                     <div className={styles.track__titleImage}>
-                      <svg className={cn(styles.track__titleSvg)}>
+                      {isCurrentTrack ? <div className={cn(styles.playingDot, {[styles.playingDotActive]: isPlaying})}></div> : <svg className={cn(styles.track__titleSvg)}>
                         <use xlinkHref="img/icon/sprite.svg#icon-note" />
-                      </svg>
+                      </svg> }
+                     
                     </div>
                     <div className={styles.track__titleText}>
                       <span className={styles.track__titleLink}>
