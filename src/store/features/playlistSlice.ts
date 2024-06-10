@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TrackType } from "@/types";
+import { TrackType } from "@/types/types";
 type PlaylistStateType = {
   isPlaying: boolean;
   currentTrack: null | TrackType;
@@ -37,9 +37,7 @@ const PlaylistSlice = createSlice({
         (playlist) => playlist.id === state.currentTrack?.id
       );
       const nextIndex = currentIndex + 1;
-      if (nextIndex >= playlist.length) {
-        state.currentTrack = playlist[0];
-      } else {
+      if (nextIndex <= playlist.length - 1) {
         state.currentTrack = playlist[nextIndex];
       }
     },
@@ -53,8 +51,6 @@ const PlaylistSlice = createSlice({
       const prevIndex = currentIndex - 1;
       if (prevIndex >= 0) {
         state.currentTrack = playlist[prevIndex];
-      } else {
-        state.currentTrack = playlist[playlist.length - 1];
       }
     },
 
