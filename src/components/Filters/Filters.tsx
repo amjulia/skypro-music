@@ -23,7 +23,7 @@ export const Filters = ({ uniqueAuthors, uniqueGenre }: Props) => {
       list: ["По умолчанию", "Сначала новые", "Сначала старые"],
       title: "году выпуска",
       value: "release",
-      selected: useAppSelector((store) => store.playlist.filterOptions.order),
+      selected: Array.from(useAppSelector((store) => store.playlist.filterOptions.order)),
     },
   ];
   const [filterValue, setFilterValue] = useState<string | null>(null);
