@@ -10,6 +10,7 @@ export const Menu = () => {
   return (
     <nav className={styles.nav}>
       <div>
+      <Link href="/">
         <Image
           className={styles.logo__image}
           src="/img/logo.png"
@@ -17,6 +18,7 @@ export const Menu = () => {
           height={17}
           alt="logo"
         />
+        </Link>
       </div>
       <div className={styles.nav__burger} onClick={toggleMenu}>
         <span className={styles.burger__line} />
