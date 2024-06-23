@@ -12,6 +12,7 @@ import { Sidebar } from '@/components/Sidebar/Sidebar';
 const MainTracksPage = () => {
   const dispatch = useAppDispatch();
   const filterTracks = useAppSelector((store) => store.playlist.filterPlaylist);
+  const tracks = useAppSelector((store) => store.playlist.playlist)
   useEffect(() => {
     getTracks().then((tracksData) => {
     dispatch(setPlaylist({ tracks: tracksData }));
@@ -20,7 +21,7 @@ const MainTracksPage = () => {
   return (<>
        <div className={styles.mainCenterblock}>
       <h2 className={styles.heading}>Треки</h2>
-      <Filters tracks={filterTracks}/>
+      <Filters tracks={tracks}/>
       <Centerblock tracks={filterTracks}/>  
       
       </div>

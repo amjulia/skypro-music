@@ -4,7 +4,7 @@ import cn from "classnames";
 import styles from "./Player.module.css";
 
 import ProgressBar from "../ProgressBar/ProgressBar";
-import { timer } from "../helper";
+import { timer } from "../../lib/helper";
 import { useAppDispatch, useAppSelector } from "@/hooks/store";
 import {
   setIsPlaying,
@@ -62,19 +62,15 @@ export const Player = () => {
     };
   }, [currentTrack]);
 
-  //регулирование громкости
-  // useEffect(() => {
-  //   if (audioRef.current) {
-  //     audioRef.current.volume = volume;
-  //   }
-  // }, [volume]);
-  
-  const handleVolume = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume;
-      setVolume(Number(event.target.value));
-    }
-  }, [volume]);
+  const handleVolume = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      if (audioRef.current) {
+        audioRef.current.volume = volume;
+        setVolume(Number(event.target.value));
+      }
+    },
+    [volume]
+  );
 
   const handleProgress = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     if (audioRef.current) {
@@ -119,10 +115,6 @@ export const Player = () => {
           value={currentTime}
           step={0.01}
           onChange={handleProgress}
-          // onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          //   audioRef.current &&
-          //   (audioRef.current.currentTime = Number(e.target.value))
-          // }
         />
 
         <div className={styles.bar__playerBlock}>
@@ -227,7 +219,7 @@ export const Player = () => {
                   step="0.01"
                   value={volume}
                   onChange={handleVolume}
-                  />
+                />
               </div>
             </div>
           </div>

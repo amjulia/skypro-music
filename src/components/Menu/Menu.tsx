@@ -16,15 +16,15 @@ export const Menu = () => {
           src="/img/logo.png"
           width={113}
           height={17}
-          alt="logo"
+          alt="Логотип скайпро музыка"
         />
         </Link>
       </div>
-      <div className={styles.nav__burger} onClick={toggleMenu}>
+      <button className={styles.nav__burger} onClick={toggleMenu}>
         <span className={styles.burger__line} />
         <span className={styles.burger__line} />
         <span className={styles.burger__line} />
-      </div>
+      </button>
       {isOpen && (
         <div className={styles.nav__menu}>
           <ul className={styles.menu__list}>

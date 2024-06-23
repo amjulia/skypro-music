@@ -5,7 +5,7 @@ import cn from "classnames";
 import { TrackType } from "@/types/types";
 import { useAppDispatch, useAppSelector } from "@/hooks/store";
 import { setCurrentTrack, setIsPlaying } from "@/store/features/playlistSlice";
-import { timer } from "../helper";
+import { timer } from "../../lib/helper";
 type Props = {
   track: TrackType;
   tracks: TrackType[];
