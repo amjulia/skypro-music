@@ -1,4 +1,3 @@
-
 import Exit from "../Exit/Exit";
 import { Menu } from "../Menu/Menu";
 import Search from "../Search/Search";

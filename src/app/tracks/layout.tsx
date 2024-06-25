@@ -4,6 +4,7 @@ import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { Player } from "@/components/Player/Player";
 import Search from "@/components/Search/Search";
 import Header from "@/components/Header/Header";
+import Exit from "@/components/Exit/Exit";
 export default function TracksLayout({
   children,
 }: Readonly<{

@@ -10,14 +10,14 @@ export const Menu = () => {
   return (
     <nav className={styles.nav}>
       <div>
-      <Link href="/">
-        <Image
-          className={styles.logo__image}
-          src="/img/logo.png"
-          width={113}
-          height={17}
-          alt="Логотип скайпро музыка"
-        />
+        <Link href="/">
+          <Image
+            className={styles.logo__image}
+            src="/img/logo.png"
+            width={113}
+            height={17}
+            alt="Логотип скайпро музыка"
+          />
         </Link>
       </div>
       <button className={styles.nav__burger} onClick={toggleMenu}>
