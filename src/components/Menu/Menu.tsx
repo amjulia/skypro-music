@@ -12,7 +12,7 @@ export const Menu = () => {
       <div>
         <Link href="/">
           <Image
-            className={styles.logo__image}
+            className={styles.logoImage}
             src="/img/logo.png"
             width={113}
             height={17}
@@ -20,26 +20,26 @@ export const Menu = () => {
           />
         </Link>
       </div>
-      <button className={styles.nav__burger} onClick={toggleMenu}>
-        <span className={styles.burger__line} />
-        <span className={styles.burger__line} />
-        <span className={styles.burger__line} />
+      <button className={styles.navBurger} onClick={toggleMenu}>
+        <span className={styles.burgerLine} />
+        <span className={styles.burgerLine} />
+        <span className={styles.burgerLine} />
       </button>
       {isOpen && (
-        <div className={styles.nav__menu}>
-          <ul className={styles.menu__list}>
-            <li className={styles.menu__item}>
-              <a href="#" className={styles.menu__link}>
+        <div className={styles.navMenu}>
+          <ul className={styles.menuList}>
+            <li className={styles.menuItem}>
+              <a href="#" className={styles.menuLink}>
                 Главное
               </a>
             </li>
-            <li className={styles.menu__item}>
-              <a href="#" className={styles.menu__link}>
+            <li className={styles.menuItem}>
+              <a href="#" className={styles.menuLink}>
                 Мой плейлист
               </a>
             </li>
-            <li className={styles.menu__item}>
-              <Link href="/signin" className={styles.menu__link}>
+            <li className={styles.menuItem}>
+              <Link href="/signin" className={styles.menuLink}>
                 Войти
               </Link>
             </li>
