@@ -5,7 +5,7 @@ import cn from "classnames";
 import { TrackType } from "@/types/types";
 import { useAppDispatch, useAppSelector } from "@/hooks/store";
 import { setCurrentTrack, setIsPlaying } from "@/store/features/playlistSlice";
-import { timer } from "../helper";
+import { timer } from "../../lib/helper";
 type Props = {
   track: TrackType;
   tracks: TrackType[];
@@ -34,7 +34,7 @@ const Track = ({ track, tracks }: Props) => {
               ></div>
             ) : (
               <svg className={cn(styles.track__titleSvg)}>
-                <use xlinkHref="img/icon/sprite.svg#icon-note" />
+                <use xlinkHref="/img/icon/sprite.svg#icon-note" />
               </svg>
             )}
           </div>
@@ -53,7 +53,7 @@ const Track = ({ track, tracks }: Props) => {
         </div>
         <div className={styles.track__time}>
           <svg className={styles.track__timeSvg}>
-            <use xlinkHref="img/icon/sprite.svg#icon-like" />
+            <use xlinkHref="/img/icon/sprite.svg#icon-like" />
           </svg>
           <span className={styles.track__timeText}>
             {timer(duration_in_seconds)}

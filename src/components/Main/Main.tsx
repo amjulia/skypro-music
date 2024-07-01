@@ -14,10 +14,10 @@ export type Props = {
 };
 export const Main = ({ tracks }: Props) => {
   const dispatch = useAppDispatch();
-  const uniqueAuthors = Array.from(
-    new Set(tracks.map((track) => track.author))
-  );
-  const uniqueGenre = Array.from(new Set(tracks.map((track) => track.genre)));
+  // const uniqueAuthors = Array.from(
+  //   new Set(tracks.map((track) => track.author))
+  // );
+  // const uniqueGenre = Array.from(new Set(tracks.map((track) => track.genre)));
   const filterTracks = useAppSelector((store) => store.playlist.filterPlaylist);
 
   useEffect(() => {
@@ -31,8 +31,8 @@ export const Main = ({ tracks }: Props) => {
           <Menu />
           <Centerblock
             tracks={filterTracks}
-            uniqueAuthors={uniqueAuthors}
-            uniqueGenre={uniqueGenre}
+            // uniqueAuthors={uniqueAuthors}
+            // uniqueGenre={uniqueGenre}
           />
           <Sidebar />
         </main>
