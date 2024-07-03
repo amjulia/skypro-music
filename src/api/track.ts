@@ -6,3 +6,18 @@ export async function getTracks() {
   }
   return response.json();
 }
+
+export const fetchFavoriteTracks = async (access: string) => {
+  const response = await fetch(apiUrl + "favorite/all/", {
+    headers: {
+      Authorization: `Bearer ${access}`,
+    },
+    method: "POST",
+    body: JSON.stringify({ id }),
+  });
+  if (!response.ok) {
+    throw new Error("Ошибка при получении данных");
+  }
+  const responseData = await response.json();
+  return responseData;
+};
