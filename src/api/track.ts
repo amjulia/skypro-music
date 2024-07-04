@@ -12,8 +12,7 @@ export const fetchFavoriteTracks = async (access: string) => {
     headers: {
       Authorization: `Bearer ${access}`,
     },
-    method: "POST",
-    body: JSON.stringify({ id }),
+    method: "GET",
   });
   if (!response.ok) {
     throw new Error("Ошибка при получении данных");

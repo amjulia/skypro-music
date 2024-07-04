@@ -6,12 +6,12 @@ import { useAppSelector } from "@/hooks/store";
 import { TrackType } from "@/types/types";
 export type Props = {
   tracks: TrackType[];
-}
-export const Filters = ({ tracks}: Props) => {
+};
+export const Filters = ({ tracks }: Props) => {
   const uniqueAuthors = Array.from(
-      new Set(tracks?.map((track) => track.author))
-    );
-    const uniqueGenre = Array.from(new Set(tracks?.map((track) => track.genre)));
+    new Set(tracks?.map((track) => track.author))
+  );
+  const uniqueGenre = Array.from(new Set(tracks?.map((track) => track.genre)));
   const filterData = [
     {
       list: uniqueAuthors,
@@ -29,7 +29,7 @@ export const Filters = ({ tracks}: Props) => {
       list: ["По умолчанию", "Сначала новые", "Сначала старые"],
       title: "году выпуска",
       value: "release",
-      selected: Array.from(useAppSelector((store) => store.playlist.filterOptions.order)),
+      selected: useAppSelector((store) => store.playlist.filterOptions.order),
     },
   ];
   const [filterValue, setFilterValue] = useState<string | null>(null);

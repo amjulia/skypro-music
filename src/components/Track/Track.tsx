@@ -6,20 +6,25 @@ import { TrackType } from "@/types/types";
 import { useAppDispatch, useAppSelector } from "@/hooks/store";
 import { setCurrentTrack, setIsPlaying } from "@/store/features/playlistSlice";
 import { timer } from "../../lib/helper";
+import { useLikeTrack } from "@/hooks/likes";
 type Props = {
   track: TrackType;
   tracks: TrackType[];
 };
 const Track = ({ track, tracks }: Props) => {
   const dispatch = useAppDispatch();
-  const { name, author, album, duration_in_seconds } = track;
+  const { name, author, album, duration_in_seconds, stared_user } = track;
   const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
   const isCurrentTrack = currentTrack?.id === track.id;
   const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
+  const userData = useAppSelector((state) => state.auth.user);
+
   const handleTrackClick = () => {
     dispatch(setCurrentTrack({ currentTrack: track, tracks }));
     if (!isPlaying) dispatch(setIsPlaying());
   };
+
+  const { isLiked, handleLike } = useLikeTrack(track);
 
   return (
     <div className={styles.playlist__item} onClick={handleTrackClick}>
@@ -52,8 +57,12 @@ const Track = ({ track, tracks }: Props) => {
           <span className={styles.track__albumLink}>{album}</span>
         </div>
         <div className={styles.track__time}>
-          <svg className={styles.track__timeSvg}>
-            <use xlinkHref="/img/icon/sprite.svg#icon-like" />
+          <svg className={styles.track__timeSvg} onClick={handleLike}>
+            <use
+              xlinkHref={`/img/icon/sprite.svg#icon-${
+                isLiked ? "like" : "dislike"
+              }`}
+            />
           </svg>
           <span className={styles.track__timeText}>
             {timer(duration_in_seconds)}

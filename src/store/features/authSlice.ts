@@ -44,10 +44,7 @@ const AuthSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    // setAuthState: (state, action: PayloadAction<boolean>) => {
-    //   state.isAuth = action.payload;
-    // },
-    logout: (state) => {
+     logout: (state) => {
       state.user = null;
       state.tokens.access = null;
       state.tokens.refresh = null;
@@ -79,7 +76,10 @@ const AuthSlice = createSlice({
         (state, action: PayloadAction<StaredUserType>) => {
           state.user = action.payload;
         }
-      );
+      )
+      .addCase(getUser.rejected, (state, action) => {
+        console.error("Error:", action.error.message); // Выводим сообщение об ошибке в консоль
+      });
   },
 });
 

@@ -59,7 +59,12 @@ export const fetchAuthorization = async ({
   });
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.error);
+    let errorMessage = "";
+    for (const key in error) {
+      errorMessage += error[key][0];
+    }
+    console.log(errorMessage);
+    throw new Error(errorMessage);
   }
   const responseData = await response.json();
   return responseData;

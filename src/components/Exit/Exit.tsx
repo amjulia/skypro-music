@@ -8,13 +8,14 @@ import { logout } from "@/store/features/authSlice";
 const Exit = () => {
   const dispatch = useAppDispatch();
   useInitializeLikedTracks();
+
   const userName = useAppSelector((state) => state.auth.user?.username);
-  const auth = useAppSelector((state) => state.auth.user);
+
   if (!userName) {
     return null;
   }
   const exitLogout = () => {
-    dispatch(logout())
+    dispatch(logout());
   };
   return (
     <div>

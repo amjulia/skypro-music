@@ -11,6 +11,7 @@ import { getAuth, getTokens, getUser } from "@/store/features/authSlice";
 export const SignUp = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({ email: "", password: "" });
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -20,6 +21,19 @@ export const SignUp = () => {
         [name]: value,
       };
     });
+    // if (name === "email") {
+
+    //   if (value === "") {
+    //     setError("Это поле не может быть пустым.");
+    //   }
+    // }
+    // if (name === "password") {
+    //   if (!(value.length > 7 && /[a-zA-z]/.test(value) && /[0-9]/.test(value)))
+    //   setError("Введённый пароль слишком короткий. Он должен содержать как минимум 8 символов..");
+    //   if (value === "") {
+    //     setError("Это поле не может быть пустым.");
+    //   }
+    // }
   }
   async function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
@@ -29,8 +43,8 @@ export const SignUp = () => {
         dispatch(getAuth(formData)).unwrap(),
       ]);
       router.push("/signin");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      setError(err.message);
     }
   }
   return (
@@ -56,6 +70,7 @@ export const SignUp = () => {
               value={formData.email}
               onChange={handleChange}
             />
+
             <input
               className={styles.modal__input}
               type="password"
@@ -72,6 +87,7 @@ export const SignUp = () => {
               value={formData.password}
               onChange={handleChange}
             />
+            {error && <p className={styles.error}>{error}</p>}
             <button
               className={styles.modal__btnSignupEnt}
               onClick={handleSubmit}
