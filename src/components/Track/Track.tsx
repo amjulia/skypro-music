@@ -17,8 +17,7 @@ const Track = ({ track, tracks }: Props) => {
   const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
   const isCurrentTrack = currentTrack?.id === track.id;
   const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
-  const userData = useAppSelector((state) => state.auth.user);
-
+  
   const handleTrackClick = () => {
     dispatch(setCurrentTrack({ currentTrack: track, tracks }));
     if (!isPlaying) dispatch(setIsPlaying());

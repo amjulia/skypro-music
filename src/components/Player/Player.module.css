@@ -278,6 +278,7 @@
   height: 12px;
   fill: transparent;
   stroke: #696969;
+  cursor: pointer;
 }
 
 .trackPlay__dislike {

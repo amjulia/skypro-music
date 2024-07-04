@@ -12,12 +12,13 @@ import {
   setNextTrack,
   setPrevTrack,
 } from "@/store/features/playlistSlice";
+import { useLikeTrack } from "@/hooks/likes";
 
 export const Player = () => {
   const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
   const audioRef = useRef<null | HTMLAudioElement>(null);
   const dispatch = useAppDispatch();
-
+  const { isLiked, handleLike } = useLikeTrack({track:currentTrack});
   const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
   const isShaffled = useAppSelector((state) => state.playlist.isShuffled);
 
@@ -190,15 +191,14 @@ export const Player = () => {
               </div>
               <div className={styles.trackPlay__likeDis}>
                 <div className={cn(styles.trackPlay__like, styles.btnIcon)}>
-                  <svg className={styles.trackPlay__likeSvg}>
-                    <use xlinkHref="/img/icon/sprite.svg#icon-like" />
+                  <svg className={styles.trackPlay__likeSvg} onClick={handleLike}>
+                  <use
+              xlinkHref={`/img/icon/sprite.svg#icon-${
+                isLiked ? "like" : "dislike"
+              }`}/>
                   </svg>
                 </div>
-                <div className={cn(styles.trackPlay__dislike, styles.btnIcon)}>
-                  <svg className={styles.trackPlay__dislikeSvg}>
-                    <use xlinkHref="/img/icon/sprite.svg#icon-dislike" />
-                  </svg>
-                </div>
+                
               </div>
             </div>
           </div>
