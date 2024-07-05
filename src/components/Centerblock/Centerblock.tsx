@@ -8,11 +8,9 @@ type Props = {
   tracks: TrackType[];
 };
 export const Centerblock = ({ tracks }: Props) => {
-  
   return (
     <div className={styles.centerblock}>
-    
-      {/* <h2 className={styles.heading}>Треки</h2>
+      {/* <h2 className={styles.heading}>title</h2>
 
       <Filters tracks={tracks} /> */}
       <div className={styles.content}>

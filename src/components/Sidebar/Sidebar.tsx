@@ -8,7 +8,7 @@ export const Sidebar = () => {
     
       <div className={styles.sidebar__block}>
         <div className={styles.sidebar__list}>
-          <div className={styles.sidebar__item}>
+           <div className={styles.sidebar__item}>
             <Link className={styles.sidebar__link} href="/tracks/category/1">
               <Image
                 className={styles.sidebar__img}

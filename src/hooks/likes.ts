@@ -32,6 +32,7 @@ export const useLikeTrack = (track: TrackType) => {
       return alert("Пожалуйста, авторизуйтесь.");
     }
     const action = isLiked ? setDisLike : setLike;
+    console.log(isLiked)
     try {
       await action(tokens.access, track.id);
       isLiked ? dispatch(disLikeTrack(track)) : dispatch(likeTrack(track));

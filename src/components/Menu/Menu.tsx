@@ -29,15 +29,11 @@ export const Menu = () => {
         <div className={styles.navMenu}>
           <ul className={styles.menuList}>
             <li className={styles.menuItem}>
-              <a href="#" className={styles.menuLink}>
-                Главное
-              </a>
+            <Link className={styles.menuLink} href="/">Главное</Link>
             </li>
             <li className={styles.menuItem}>
-              <a href="#" className={styles.menuLink}>
-                Мой плейлист
-              </a>
-            </li>
+            <Link className={styles.menuLink} href="/tracks/favorite">Мой плейлист</Link>
+             </li>
             <li className={styles.menuItem}>
               <Link href="/signin" className={styles.menuLink}>
                 Войти
