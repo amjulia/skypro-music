@@ -17,7 +17,7 @@ const Track = ({ track, tracks }: Props) => {
   const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
   const isCurrentTrack = currentTrack?.id === track.id;
   const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
-  
+
   const handleTrackClick = () => {
     dispatch(setCurrentTrack({ currentTrack: track, tracks }));
     if (!isPlaying) dispatch(setIsPlaying());
@@ -56,12 +56,13 @@ const Track = ({ track, tracks }: Props) => {
           <span className={styles.track__albumLink}>{album}</span>
         </div>
         <div className={styles.track__time}>
-          <svg className={styles.track__timeSvg} onClick={handleLike}>
-            <use
-              xlinkHref={`/img/icon/sprite.svg#icon-${
-                isLiked ? "like" : "dislike"
-              }`}
-            />
+          <svg
+            className={cn(styles.track__likeSvg, {
+              [styles.track__likeSvgActive]: isLiked,
+            })}
+            onClick={handleLike}
+          >
+            <use xlinkHref="/img/icon/sprite.svg#icon-like" />
           </svg>
           <span className={styles.track__timeText}>
             {timer(duration_in_seconds)}

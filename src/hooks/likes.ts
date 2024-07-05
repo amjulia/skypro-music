@@ -18,10 +18,10 @@ export function useInitializeLikedTracks() {
   }, [tokens, dispatch]);
 }
 
-export const useLikeTrack = (track: TrackType) => {
+export const useLikeTrack = (track: TrackType | null) => {
   const dispatch = useAppDispatch();
   const likedTracks = useAppSelector((state) => state.playlist.likedTracks);
-  const isLiked = !!likedTracks.find((t) => t.id === track.id);
+  const isLiked = !!likedTracks.find((t) => t.id === track?.id);
   const tokens = useAppSelector((state) => state.auth.tokens);
   const handleLike = async (
     

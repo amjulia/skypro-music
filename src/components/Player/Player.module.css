@@ -280,6 +280,13 @@
   stroke: #696969;
   cursor: pointer;
 }
+.trackPlaylikeSvgActive {
+  width: 14px;
+  height: 12px;
+  margin-right: 17px;
+  fill: #b672ff;
+  stroke: #696969;
+}
 
 .trackPlay__dislike {
   margin-left: 28.5px;

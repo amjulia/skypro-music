@@ -22,8 +22,9 @@ const MainTracksPage = () => {
        <div className={styles.mainCenterblock}>
       <h2 className={styles.heading}>Треки</h2>
       <Filters tracks={tracks}/>
-      <Centerblock tracks={filterTracks}/>  
       
+      <Centerblock tracks={filterTracks}/>  
+      {filterTracks.length === 0 && "Треки не найдены"}
       </div>
       <Sidebar /> 
       </>
