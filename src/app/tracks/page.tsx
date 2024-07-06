@@ -1,7 +1,7 @@
 'use client'
 import { Centerblock } from '@/components/Centerblock/Centerblock'
 import { Filters } from '@/components/Filters/Filters'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "./layout.module.css";
 import { useAppDispatch, useAppSelector } from '@/hooks/store';
 import { setPlaylist } from '@/store/features/playlistSlice';
@@ -10,12 +10,14 @@ import { Sidebar } from '@/components/Sidebar/Sidebar';
 
 
 const MainTracksPage = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const dispatch = useAppDispatch();
   const filterTracks = useAppSelector((store) => store.playlist.filterPlaylist);
   const tracks = useAppSelector((store) => store.playlist.playlist)
   useEffect(() => {
     getTracks().then((tracksData) => {
     dispatch(setPlaylist({ tracks: tracksData }));
+    setIsLoading(false)
     });
   }, [dispatch]);
   return (<>
@@ -23,8 +25,8 @@ const MainTracksPage = () => {
       <h2 className={styles.heading}>Треки</h2>
       <Filters tracks={tracks}/>
       
-      <Centerblock tracks={filterTracks}/>  
-      {filterTracks.length === 0 && "Треки не найдены"}
+      <Centerblock tracks={filterTracks}/> 
+      {isLoading ? "Загрузка" : filterTracks.length === 0 ? "Треки не найдены" : null}
       </div>
       <Sidebar /> 
       </>

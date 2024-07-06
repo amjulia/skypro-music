@@ -6,11 +6,11 @@ import { setPlaylist } from "@/store/features/playlistSlice";
 import styles from "./page.module.css";
 import React, { useEffect, useState } from "react";
 type CategoryProps = {
-  params: {
+    params: {
     id: string;
   };
 };
-const Category = ({ params }: CategoryProps) => {
+const Category = ({ params}: CategoryProps) => {
   const dispatch = useAppDispatch();
   const filterTracks = useAppSelector((store) => store.playlist.filterPlaylist);
   useEffect(() => {
@@ -40,7 +40,7 @@ const Category = ({ params }: CategoryProps) => {
   return (
     <div className={styles.mainCenterblock}>
       <h2 className={styles.heading}>{title}</h2>
-      <Centerblock tracks={filterTracks} />
+      <Centerblock tracks={filterTracks}/>
     </div>
   );
 };

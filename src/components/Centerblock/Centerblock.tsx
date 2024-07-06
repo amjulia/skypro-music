@@ -6,13 +6,10 @@ import Track from "../Track/Track";
 
 type Props = {
   tracks: TrackType[];
-};
-export const Centerblock = ({ tracks }: Props) => {
+ };
+export const Centerblock = ({ tracks}: Props) => {
   return (
     <div className={styles.centerblock}>
-      {/* <h2 className={styles.heading}>title</h2>
-
-      <Filters tracks={tracks} /> */}
       <div className={styles.content}>
         <div className={styles.content__title}>
           <div className={cn(styles.playlistTitle__col, styles.col01)}>
@@ -30,6 +27,7 @@ export const Centerblock = ({ tracks }: Props) => {
             </svg>
           </div>
         </div>
+        
         <div className={styles.content__playlist}>
           {tracks?.map((value) => {
             return <Track track={value} tracks={tracks} key={value.id} />;

@@ -2,7 +2,6 @@
 import { useState, useRef, useEffect, ChangeEvent, useCallback } from "react";
 import cn from "classnames";
 import styles from "./Player.module.css";
-
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { timer } from "../../lib/helper";
 import { useAppDispatch, useAppSelector } from "@/hooks/store";
