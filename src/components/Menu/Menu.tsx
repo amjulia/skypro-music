@@ -3,12 +3,11 @@ import Link from "next/link";
 import styles from "./Menu.module.css";
 import Image from "next/image";
 import { useState } from "react";
-import { useAppSelector } from "@/hooks/store";
+
 
 export const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const logged = useAppSelector((state) => state.auth.tokens.access);
-  const toggleMenu = () => setIsOpen((prevState) => !prevState);
+   const toggleMenu = () => setIsOpen((prevState) => !prevState);
   return (
     <nav className={styles.nav}>
       <div>
@@ -34,7 +33,7 @@ export const Menu = () => {
             <Link className={styles.menuLink} href="/">Главное</Link>
             </li>
             <li className={styles.menuItem}>
-              {logged &&<Link className={styles.menuLink} href="/tracks/favorite">Мой плейлист</Link> }
+              <Link className={styles.menuLink} href="/tracks/favorite">Мой плейлист</Link> 
             </li>
             <li className={styles.menuItem}>
               <Link href="/signin" className={styles.menuLink}>
