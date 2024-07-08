@@ -43,7 +43,7 @@ export const SignUp = () => {
         dispatch(getAuth(formData)).unwrap(),
       ]);
       router.push("/signin");
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
     }
   }
@@ -92,7 +92,7 @@ export const SignUp = () => {
               className={styles.modal__btnSignupEnt}
               onClick={handleSubmit}
             >
-              <a href="/signin">Зарегистрироваться</a>
+              <Link href="/signin">Зарегистрироваться</Link>
             </button>
           </form>
         </div>

@@ -152,6 +152,8 @@ const PlaylistSlice = createSlice({
         (el) => el.id !== action.payload.id
       );
     },
+    clearLikedTracks: (state) => {state.likedTracks = []}
+   
   },
   extraReducers(builder) {
     builder.addCase(
@@ -173,5 +175,6 @@ export const {
   setPlaylist,
   likeTrack,
   disLikeTrack,
+  clearLikedTracks
 } = PlaylistSlice.actions;
 export const playlistReducer = PlaylistSlice.reducer;

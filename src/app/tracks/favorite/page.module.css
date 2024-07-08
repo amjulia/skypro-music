@@ -14,3 +14,10 @@
     letter-spacing: -0.8px;
     margin-bottom: 95px;
   }
+  .link {
+    color: #ffff;
+    font-size: 36px;
+  }
+  .link:hover {
+    color:blueviolet
+  }

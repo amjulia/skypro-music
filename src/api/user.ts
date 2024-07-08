@@ -13,10 +13,23 @@ export const fetchUser = async ({ email, password }: SigninFormType) => {
       "Content-Type": "application/json",
     },
   });
+  // if (response.status === 400) {
+  //   throw new Error("Неверный логин или пароль");
+  // } else if (!response.ok) {
+  //   throw new Error("Заполните поля");
+  // }
   if (response.status === 400) {
-    throw new Error("Неверный логин или пароль");
-  } else if (!response.ok) {
-    throw new Error("Заполните поля");
+    const error = await response.json();
+    let errorMessage = "";
+    for (const key in error) {
+      errorMessage += error[key][0];
+    }
+    console.log(errorMessage);
+    throw new Error(errorMessage);
+  }
+  else if (response.status === 401) {
+    const error = await response.json();
+    throw new Error(error.error);
   }
   const responseData = await response.json();
   return responseData;
@@ -33,10 +46,23 @@ export const fetchTokens = async ({ email, password }: SigninFormType) => {
       "Content-Type": "application/json",
     },
   });
+  // if (response.status === 400) {
+  //   throw new Error("Неверный токен");
+  // } else if (!response.ok) {
+  //   throw new Error("Заполните поля");
+  // }
   if (response.status === 400) {
-    throw new Error("Неверный токен");
-  } else if (!response.ok) {
-    throw new Error("Заполните поля");
+    const error = await response.json();
+    let errorMessage = "";
+    for (const key in error) {
+      errorMessage += error[key][0];
+    }
+    console.log(errorMessage);
+    throw new Error(errorMessage);
+  }
+  else if (response.status === 401) {
+    const error = await response.json();
+    throw new Error(error.detail);
   }
   const responseData = await response.json();
   return responseData;

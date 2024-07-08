@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 export const SignIn = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({ email: "", password: "" });
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -29,8 +30,8 @@ export const SignIn = () => {
         dispatch(getUser(formData)).unwrap(),
       ]);
       router.push("/");
-    } catch (error) {
-      console.log(error);
+    } catch (err: any) {
+      setError(err.message);
     }
   }
   return (
@@ -64,6 +65,7 @@ export const SignIn = () => {
               value={formData.password}
               onChange={handleChange}
             />
+            {error && <p className={styles.error}>{error}</p>}
             <button className={styles.modal__btnEnter} onClick={handleSubmit}>
               Войти
             </button>
