@@ -15,9 +15,9 @@ const Exit = () => {
   if (!userName) {
     return null;
   }
-   const exitLogout = () => {
+  const exitLogout = () => {
     dispatch(logout());
-    dispatch(clearLikedTracks()); 
+    dispatch(clearLikedTracks());
   };
   return (
     <div>

@@ -4,10 +4,9 @@ import styles from "./Menu.module.css";
 import Image from "next/image";
 import { useState } from "react";
 
-
 export const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
-   const toggleMenu = () => setIsOpen((prevState) => !prevState);
+  const toggleMenu = () => setIsOpen((prevState) => !prevState);
   return (
     <nav className={styles.nav}>
       <div>
@@ -30,10 +29,14 @@ export const Menu = () => {
         <div className={styles.navMenu}>
           <ul className={styles.menuList}>
             <li className={styles.menuItem}>
-            <Link className={styles.menuLink} href="/">Главное</Link>
+              <Link className={styles.menuLink} href="/">
+                Главное
+              </Link>
             </li>
             <li className={styles.menuItem}>
-              <Link className={styles.menuLink} href="/tracks/favorite">Мой плейлист</Link> 
+              <Link className={styles.menuLink} href="/tracks/favorite">
+                Мой плейлист
+              </Link>
             </li>
             <li className={styles.menuItem}>
               <Link href="/signin" className={styles.menuLink}>

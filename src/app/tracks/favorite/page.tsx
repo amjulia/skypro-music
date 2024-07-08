@@ -16,9 +16,16 @@ export default function FavoriteTrackPage() {
 
   return (
     <div className={styles.mainCenterblock}>
-      {logged ? (<><h2 className={styles.centerblockH2}>Мой плейлист</h2>{" "}
-        <Centerblock tracks={tracks} />{" "}</>) : <Link href={"/signin"} className={styles.link}>Необходимо авторизоваться</Link>}
-      
+      {logged ? (
+        <>
+          <h2 className={styles.centerblockH2}>Мой плейлист</h2>{" "}
+          <Centerblock tracks={tracks} />{" "}
+        </>
+      ) : (
+        <Link href={"/signin"} className={styles.link}>
+          Необходимо авторизоваться
+        </Link>
+      )}
     </div>
   );
 }
