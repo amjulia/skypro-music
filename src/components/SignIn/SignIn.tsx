@@ -31,6 +31,7 @@ export const SignIn = () => {
       ]);
       router.push("/");
     } catch (err: any) {
+      console.log(err.message)
       setError(err.message);
     }
   }

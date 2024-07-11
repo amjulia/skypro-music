@@ -28,8 +28,7 @@ export const fetchUser = async ({ email, password }: SigninFormType) => {
     throw new Error(errorMessage);
   }
   else if (response.status === 401) {
-    const error = await response.json();
-    throw new Error(error.error);
+     throw new Error("Пользователь с таким email или паролем не найден");
   }
   const responseData = await response.json();
   return responseData;

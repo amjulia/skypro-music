@@ -137,7 +137,7 @@
   justify-content: center;
 }
 
-.modal__btnSignupEnt a {
+.modal__btnSignupEnt  {
   width: 100%;
   height: 100%;
   font-style: normal;
