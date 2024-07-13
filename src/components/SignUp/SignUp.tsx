@@ -12,7 +12,11 @@ export const SignUp = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [error, setError] = useState<string | null>(null);
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    repeatPassword: "",
+  });
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
     setFormData((prevFormData) => {
@@ -21,31 +25,21 @@ export const SignUp = () => {
         [name]: value,
       };
     });
-    // if (name === "email") {
-
-    //   if (value === "") {
-    //     setError("Это поле не может быть пустым.");
-    //   }
-    // }
-    // if (name === "password") {
-    //   if (!(value.length > 7 && /[a-zA-z]/.test(value) && /[0-9]/.test(value)))
-    //   setError("Введённый пароль слишком короткий. Он должен содержать как минимум 8 символов..");
-    //   if (value === "") {
-    //     setError("Это поле не может быть пустым.");
-    //   }
-    // }
   }
   async function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    try {
-      await Promise.all([
-        // dispatch(getTokens(formData)).unwrap(),
-        dispatch(getAuth(formData)).unwrap(),
-      ]);
-      router.push("/signin");
-    } catch (err) {
-      setError(err.message);
-     
+    if (formData.password === formData.repeatPassword) {
+      try {
+        await Promise.all([
+          // dispatch(getTokens(formData)).unwrap(),
+          dispatch(getAuth(formData)).unwrap(),
+        ]);
+        router.push("/signin");
+      } catch (err) {
+        setError(err.message);
+      }
+    } else {
+      setError("Пароли не совпадают");
     }
   }
   return (
@@ -83,9 +77,9 @@ export const SignUp = () => {
             <input
               className={styles.modal__input}
               type="password"
-              name="password"
+              name="repeatPassword"
               placeholder="Повторите пароль"
-              value={formData.password}
+              value={formData.repeatPassword}
               onChange={handleChange}
             />
             {error && <p className={styles.error}>{error}</p>}

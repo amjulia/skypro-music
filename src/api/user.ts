@@ -69,7 +69,7 @@ export const fetchTokens = async ({ email, password }: SigninFormType) => {
 
 export const fetchAuthorization = async ({
   email,
-  password,
+  password
 }: SigninFormType) => {
   const response = await fetch(apiUrl + "signup/", {
     method: "POST",

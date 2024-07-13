@@ -20,7 +20,7 @@ export const getTokens = createAsyncThunk(
 export const getAuth = createAsyncThunk(
   "user/getAuth",
   async ({ email, password }: SigninFormType) => {
-    const authorization = await fetchAuthorization({ email, password });
+    const authorization = await fetchAuthorization({ email, password});
     return authorization;
   }
 );
