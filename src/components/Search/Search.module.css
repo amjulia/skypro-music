@@ -12,11 +12,13 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  padding-left: 130px;
+  
 }
 .search__svg {
   width: 17px;
   height: 17px;
-  margin-right: 5px;
+  margin-left: 120px;
   stroke: #ffffff;
   fill: transparent;
 }
@@ -32,6 +34,7 @@
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
+  outline: none;
 }
 .search__text::-webkit-input-placeholder {
   background-color: transparent;

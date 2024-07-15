@@ -1,10 +1,6 @@
-import { Menu } from "@/components/Menu/Menu";
 import styles from "./layout.module.css";
-import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { Player } from "@/components/Player/Player";
-import Search from "@/components/Search/Search";
 import Header from "@/components/Header/Header";
-import Exit from "@/components/Exit/Exit";
 export default function TracksLayout({
   children,
 }: Readonly<{
@@ -16,7 +12,6 @@ export default function TracksLayout({
         <main className={styles.main}>
           <Header />
           {children}
-          {/* <Sidebar /> */}
         </main>
         <Player />
         <footer className={styles.footer} />

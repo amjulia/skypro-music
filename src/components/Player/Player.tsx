@@ -2,7 +2,6 @@
 import { useState, useRef, useEffect, ChangeEvent, useCallback } from "react";
 import cn from "classnames";
 import styles from "./Player.module.css";
-
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { timer } from "../../lib/helper";
 import { useAppDispatch, useAppSelector } from "@/hooks/store";
@@ -12,12 +11,13 @@ import {
   setNextTrack,
   setPrevTrack,
 } from "@/store/features/playlistSlice";
+import { useLikeTrack } from "@/hooks/likes";
 
 export const Player = () => {
   const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
   const audioRef = useRef<null | HTMLAudioElement>(null);
   const dispatch = useAppDispatch();
-
+  const { isLiked, handleLike } = useLikeTrack(currentTrack);
   const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
   const isShaffled = useAppSelector((state) => state.playlist.isShuffled);
 
@@ -190,13 +190,13 @@ export const Player = () => {
               </div>
               <div className={styles.trackPlay__likeDis}>
                 <div className={cn(styles.trackPlay__like, styles.btnIcon)}>
-                  <svg className={styles.trackPlay__likeSvg}>
+                  <svg
+                    className={cn(styles.trackPlay__likeSvg, {
+                      [styles.trackPlaylikeSvgActive]: isLiked,
+                    })}
+                    onClick={handleLike}
+                  >
                     <use xlinkHref="/img/icon/sprite.svg#icon-like" />
-                  </svg>
-                </div>
-                <div className={cn(styles.trackPlay__dislike, styles.btnIcon)}>
-                  <svg className={styles.trackPlay__dislikeSvg}>
-                    <use xlinkHref="/img/icon/sprite.svg#icon-dislike" />
                   </svg>
                 </div>
               </div>

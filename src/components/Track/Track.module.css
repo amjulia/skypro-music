@@ -98,11 +98,18 @@
     line-height: 24px;
     color: #696969;
   }
-  .track__timeSvg {
+  .track__likeSvg {
     width: 14px;
     height: 12px;
     margin-right: 17px;
     fill: transparent;
+    stroke: #696969;
+  }
+  .track__likeSvgActive {
+    width: 14px;
+    height: 12px;
+    margin-right: 17px;
+    fill: #b672ff;
     stroke: #696969;
   }
   .track__timeText {

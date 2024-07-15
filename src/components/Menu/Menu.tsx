@@ -29,14 +29,14 @@ export const Menu = () => {
         <div className={styles.navMenu}>
           <ul className={styles.menuList}>
             <li className={styles.menuItem}>
-              <a href="#" className={styles.menuLink}>
+              <Link className={styles.menuLink} href="/">
                 Главное
-              </a>
+              </Link>
             </li>
             <li className={styles.menuItem}>
-              <a href="#" className={styles.menuLink}>
+              <Link className={styles.menuLink} href="/tracks/favorite">
                 Мой плейлист
-              </a>
+              </Link>
             </li>
             <li className={styles.menuItem}>
               <Link href="/signin" className={styles.menuLink}>
