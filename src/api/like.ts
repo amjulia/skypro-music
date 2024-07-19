@@ -1,4 +1,4 @@
-const apiUrl: string = "https://skypro-music-api.skyeng.tech/catalog/track/";
+const apiUrl: string = "https://webdev-music-003b5b991590.herokuapp.com/catalog/track/";
 export const setLike = async (token: string, id: number) => {
   const response = await fetch(apiUrl + id + "/favorite/", {
     method: "POST",
