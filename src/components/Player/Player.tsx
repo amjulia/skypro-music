@@ -106,7 +106,7 @@ export const Player = () => {
   return (
     <div className={styles.bar}>
       <div className={styles.bar__content}>
-        <audio ref={audioRef} src={currentTrack?.track_file}></audio>
+        <audio ref={audioRef} src={currentTrack?.data.track_file}></audio>
         <div className={styles.barTime}>
           {timer(currentTime)} / {timer(duration)}
         </div>
@@ -179,12 +179,12 @@ export const Player = () => {
                 </div>
                 <div className={styles.trackPlay__author}>
                   <span className={styles.trackPlay__authorLink}>
-                    {currentTrack?.author}
+                    {currentTrack?.data.author}
                   </span>
                 </div>
                 <div className={styles.trackPlay__album}>
                   <span className={styles.trackPlay__albumLink}>
-                    {currentTrack?.name}
+                    {currentTrack?.data.name}
                   </span>
                 </div>
               </div>

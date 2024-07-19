@@ -7,7 +7,7 @@ import Track from "../Track/Track";
 type Props = {
   tracks: TrackType[];
  };
-export const Centerblock = ({ tracks}: Props) => {
+export const Centerblock = ({tracks}: Props) => {
   return (
     <div className={styles.centerblock}>
       <div className={styles.content}>
@@ -30,7 +30,7 @@ export const Centerblock = ({ tracks}: Props) => {
         
         <div className={styles.content__playlist}>
           {tracks?.map((value) => {
-            return <Track track={value} tracks={tracks} key={value.id} />;
+            return <Track track={value} tracks={tracks} key={value.data.id} />;
           })}
         </div>
       </div>

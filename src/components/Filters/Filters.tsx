@@ -9,9 +9,9 @@ export type Props = {
 };
 export const Filters = ({ tracks }: Props) => {
   const uniqueAuthors = Array.from(
-    new Set(tracks?.map((track) => track.author))
+    new Set(tracks?.map((track) => track.data.author))
   );
-  const uniqueGenre = Array.from(new Set(tracks?.map((track) => track.genre)));
+  const uniqueGenre = Array.from(new Set(tracks?.map((track) => track.data.genre)));
   const filterData = [
     {
       list: uniqueAuthors,
