@@ -1,12 +1,12 @@
 export type StaredUserType = {
-  id: number;
+  _id: number;
   username: string;
   first_name: string;
   last_name: string;
   email: string;
   };
 export type TrackType = {
-      id: number;
+    _id: number;
     name: string;
     author: string;
     release_date: string;

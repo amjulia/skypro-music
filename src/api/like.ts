@@ -11,7 +11,7 @@ export const setLike = async (token: string, id: number) => {
     throw new Error(error.error);
   }
   const responseData = await response.json();
-  return responseData;
+  return responseData.data;
 };
 
 export const setDisLike = async (token: string, id: number) => {
@@ -26,5 +26,5 @@ export const setDisLike = async (token: string, id: number) => {
     throw new Error(error.error);
   }
   const responseData = await response.json();
-  return responseData;
+  return responseData.data;
 };

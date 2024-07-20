@@ -18,5 +18,5 @@ export const fetchFavoriteTracks = async (access: string) => {
     throw new Error("Ошибка при получении данных");
   }
   const responseData = await response.json();
-  return responseData;
+  return responseData.data;
 };
