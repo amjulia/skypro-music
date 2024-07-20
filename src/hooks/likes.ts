@@ -34,7 +34,7 @@ export const useLikeTrack = (track: TrackType | null) => {
     const action = isLiked ? setDisLike : setLike;
     console.log(isLiked)
     try {
-      await action(tokens.access, track.id);
+      await action(tokens.access, track?.id);
       isLiked ? dispatch(disLikeTrack(track)) : dispatch(likeTrack(track));
     } catch (error) {
       console.error(error);

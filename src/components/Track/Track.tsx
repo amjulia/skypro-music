@@ -13,9 +13,9 @@ type Props = {
 };
 const Track = ({ track, tracks }: Props) => {
   const dispatch = useAppDispatch();
-  const { data } = track;
+  const { name, id, author, album, duration_in_seconds } = track;
   const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
-  const isCurrentTrack = currentTrack?.data.id === track.data.id;
+  const isCurrentTrack = currentTrack?.id === track.id;
   const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
 
   const handleTrackClick = () => {
@@ -44,16 +44,16 @@ const Track = ({ track, tracks }: Props) => {
           </div>
           <div className={styles.track__titleText}>
             <span className={styles.track__titleLink}>
-              {data.name}
+              {name}
               <span className={styles.track__titleSpan} />
             </span>
           </div>
         </div>
         <div className={styles.track__author}>
-          <span className={styles.track__authorLink}>{data.author}</span>
+          <span className={styles.track__authorLink}>{author}</span>
         </div>
         <div className={styles.track__album}>
-          <span className={styles.track__albumLink}>{data.album}</span>
+          <span className={styles.track__albumLink}>{album}</span>
         </div>
         <div className={styles.track__time}>
           <svg
@@ -65,7 +65,7 @@ const Track = ({ track, tracks }: Props) => {
             <use xlinkHref="/img/icon/sprite.svg#icon-like" />
           </svg>
           <span className={styles.track__timeText}>
-            {timer(data.duration_in_seconds)}
+            {timer(duration_in_seconds)}
           </span>
         </div>
       </div>

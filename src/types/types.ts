@@ -6,8 +6,7 @@ export type StaredUserType = {
   email: string;
   };
 export type TrackType = {
-  data: {
-    id: number;
+      id: number;
     name: string;
     author: string;
     release_date: string;
@@ -17,9 +16,7 @@ export type TrackType = {
     logo: string | null;
     track_file: string;
     stared_user: StaredUserType[];
-  }
-  
- 
+   
 };
 export type Props = {
   tracks: TrackType[];
